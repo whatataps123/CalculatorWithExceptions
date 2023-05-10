@@ -26,18 +26,21 @@ def calculator():
 
     while True:
         try:
-            num_1 = int(input("\nEnter the first number: "))
+            num_1 = float(input("\nEnter the first number: "))
             break  # If no exception occurs, exit the loop
         except ValueError:
             print("Invalid input for the first number. Try again.")
 
     while True:
         try:
-            num_2 = int(input("Enter the second number: "))
-            break  # If no exception occurs, exit the loop
+            num_2 = float(input("Enter the second number: "))
+            if calc_operation == 4 and num_2 == 0:
+                raise ZeroDivisionError("Cannot divide by zero. Please choose another number.")
+            break
         except ValueError:
             print("Invalid input for the second number. Try again.")
-
+        except ZeroDivisionError as error:
+            print(error)
 # perform operation and display result
     if calc_operation == 1:
         print(num_1, "+", num_2)
