@@ -6,14 +6,15 @@
 
 # pseudocode
 # ask the user to choose an operation (1-4)
-print("Joshua Lemuel Z. Centina's Calculator")
-print("\nChoose your desired operation:")
-print("[1] Addition")
-print("[2] Subtraction")
-print("[3] Multiplication")
-print("[4] Division")
-# ask for two numbers
 def calculator():
+    print("Joshua Lemuel Z. Centina's Calculator")
+    print("\nChoose your desired operation:")
+    print("[1] Addition")
+    print("[2] Subtraction")
+    print("[3] Multiplication")
+    print("[4] Division")
+
+# ask for two numbers
     while True:
         try:
             calc_operation = int(input("\nEnter the number of your desired operation (1-4): "))
@@ -36,6 +37,7 @@ def calculator():
             break  # If no exception occurs, exit the loop
         except ValueError:
             print("Invalid input for the second number. Try again.")
+
 # perform operation and display result
     if calc_operation == 1:
         print(num_1, "+", num_2)
@@ -57,6 +59,19 @@ def calculator():
         div_num = num_1 / num_2
         print("The quotient:", div_num)
 calculator()
+
 # ask user to try again or not
-# if yes, back to step 1
-# if no, thank you and exit program
+while True:
+    try:
+        user_retry = input("\nDo you want to perform another calculation? (yes/no): ")
+        # if yes, back to step 1
+        if user_retry.lower() == "yes":
+            calculator()
+        # if no, thank you and exit program
+        elif user_retry.lower() == "no":
+            print("Thank you for using Joshua Lemuel Z. Centina's Calculator.")
+            break
+        else:
+            raise ValueError("Invalid input")
+    except ValueError:
+        print("Invalid input. Please enter 'yes' or 'no'.")
