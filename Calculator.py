@@ -13,29 +13,50 @@ print("[2] Subtraction")
 print("[3] Multiplication")
 print("[4] Division")
 # ask for two numbers
-while True:
-    try:
-        calc_operation = int(input("\nEnter the number of your desired operation (1-4): "))
-        if calc_operation < 1 or calc_operation > 4:
-            raise ValueError("Invalid operation")
-        break  # If no exception occurs and input is valid, exit the loop
-    except ValueError:
-        print("Invalid input for the operation. Please enter a number from 1 to 4. Try again.")
+def calculator():
+    while True:
+        try:
+            calc_operation = int(input("\nEnter the number of your desired operation (1-4): "))
+            if calc_operation < 1 or calc_operation > 4:
+                raise ValueError("Invalid operation")
+            break  # If no exception occurs and input is valid, exit the loop
+        except ValueError:
+            print("Invalid input for the operation. Please enter a number from 1 to 4. Try again.")
 
-while True:
-    try:
-        num_1 = int(input("\nEnter the first number: "))
-        break  # If no exception occurs, exit the loop
-    except ValueError:
-        print("Invalid input for the first number. Try again.")
+    while True:
+        try:
+            num_1 = int(input("\nEnter the first number: "))
+            break  # If no exception occurs, exit the loop
+        except ValueError:
+            print("Invalid input for the first number. Try again.")
 
-while True:
-    try:
-        num_2 = int(input("Enter the second number: "))
-        break  # If no exception occurs, exit the loop
-    except ValueError:
-        print("Invalid input for the second number. Try again.")
+    while True:
+        try:
+            num_2 = int(input("Enter the second number: "))
+            break  # If no exception occurs, exit the loop
+        except ValueError:
+            print("Invalid input for the second number. Try again.")
 # perform operation and display result
+    if calc_operation == 1:
+        print(num_1, "+", num_2)
+        sum_num = num_1 + num_2
+        print("The sum:", sum_num)
+
+    elif calc_operation == 2: 
+        print(num_1, "-", num_2)
+        diff_num = num_1 - num_2
+        print("The difference:", diff_num)
+    
+    elif calc_operation == 3:
+        print(num_1, "*", num_2)
+        mult_num = num_1 * num_2
+        print("The product:", mult_num)
+
+    elif calc_operation == 4:
+        print(num_1, "/", num_2)
+        div_num = num_1 / num_2
+        print("The quotient:", div_num)
+calculator()
 # ask user to try again or not
 # if yes, back to step 1
 # if no, thank you and exit program
