@@ -5,10 +5,28 @@
 # The application will ask for two numbers and perform the chosen operation using then it will display the result.
 
 # pseudocode
+import time
+import sys
+print("=========================================================")
+def typewriter(text, delay=0.1):
+  for letter in text:
+    print(letter, end='', flush=True)
+    time.sleep(delay)
+  print()
+typewriter("Welcome to Joshua Lemuel Z. Centina's Calculator")
+
+print("\nLoading:")
+#animation = ["10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"]
+animation = ["[■□□□□□□□□□]","[■■□□□□□□□□]", "[■■■□□□□□□□]", "[■■■■□□□□□□]", "[■■■■■□□□□□]", "[■■■■■■□□□□]", "[■■■■■■■□□□]", "[■■■■■■■■□□]", "[■■■■■■■■■□]", "[■■■■■■■■■■]"]
+for i in range(len(animation)):
+    time.sleep(0.2)
+    sys.stdout.write("\r" + animation[i % len(animation)])
+    sys.stdout.flush()
+print("\n")
+
 # ask the user to choose an operation (1-4)
 def calculator():
-    print("Joshua Lemuel Z. Centina's Calculator")
-    print("\nChoose your desired operation:")
+    print("Choose your desired operation:")
     print("[1] Addition")
     print("[2] Subtraction")
     print("[3] Multiplication")
@@ -45,22 +63,22 @@ def calculator():
     if calc_operation == 1:
         print(num_1, "+", num_2)
         sum_num = num_1 + num_2
-        print("The sum:", sum_num)
+        print("The sum:", "\033[1;46m" + str(sum_num) + "\033[1;m")
 
     elif calc_operation == 2: 
         print(num_1, "-", num_2)
         diff_num = num_1 - num_2
-        print("The difference:", diff_num)
+        print("The difference:", "\033[1;46m" + str(diff_num) + "\033[1;m")
     
     elif calc_operation == 3:
         print(num_1, "*", num_2)
         mult_num = num_1 * num_2
-        print("The product:", mult_num)
+        print("The product:", "\033[1;46m" + str(mult_num) + "\033[1;m")
 
     elif calc_operation == 4:
         print(num_1, "/", num_2)
         div_num = num_1 / num_2
-        print("The quotient:", div_num)
+        print("The quotient:", "\033[1;46m" + str(div_num) + "\033[1;m")
 calculator()
 
 # ask user to try again or not
@@ -72,7 +90,8 @@ while True:
             calculator()
         # if no, thank you and exit program
         elif user_retry.lower() == "no":
-            print("Thank you for using Joshua Lemuel Z. Centina's Calculator.")
+            print("Thank you for using the calculator.")
+            print("=========================================================")
             break
         else:
             raise ValueError("Invalid input")
